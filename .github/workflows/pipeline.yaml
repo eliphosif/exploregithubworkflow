@@ -17,5 +17,5 @@ jobs:
 
   cloud_deploy:
     needs: [echo_helloworld]
-    uses: ./.github/workflows/cloud_deploy.yml
+    uses: ./.github/workflows/deploy.yml
     secrets: inherit
