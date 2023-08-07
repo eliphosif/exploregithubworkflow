@@ -11,8 +11,11 @@ jobs:
   echo_helloworld:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
+      - name: my-step1
         run: echo "Hello World!"
+      - name: my-step2
+        run: echo ${{ github.event.issue.pull_request}}
+         
  
 
   deploy:
