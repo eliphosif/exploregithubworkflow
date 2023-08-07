@@ -31,9 +31,7 @@ jobs:
 
       - name: Check Hash
         run: echo "${{ env.hash }}"
-
-      - name: Create docker image
-        run: ./docker-build.sh ${{ env.branch }} ${{ env.hash }}    
+ 
          
  
 
