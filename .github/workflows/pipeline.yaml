@@ -1,0 +1,21 @@
+name: fetchcore_pipeline
+
+on:
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  echo_helloworld:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "Hello World!"
+ 
+
+  cloud_deploy:
+    needs: [echo_helloworld]
+    uses: ./.github/workflows/cloud_deploy.yml
+    secrets: inherit
