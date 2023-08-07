@@ -4,7 +4,7 @@ on:
   workflow_call:
   
 jobs:
-  my-job:
+  my-job-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
@@ -12,3 +12,6 @@ jobs:
 
       - name: print
         run : echo github.event_name
+
+      - name: print
+        run : echo ${{ github.event_name }} 
