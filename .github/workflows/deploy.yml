@@ -1,0 +1,14 @@
+name: deploy
+
+on:
+  workflow_call:
+  
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "Hello World!"
+
+      - name: print
+        run : echo github.event_name
