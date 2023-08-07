@@ -15,6 +15,25 @@ jobs:
         run: echo "Hello World!"
       - name: my-step2
         run: echo ${{ github.event.issue.pull_request}}
+      - name: my-step3
+        run: echo   ${{ github.head_ref }}.${{ github.sha }}
+
+      - name: Get Branch
+        id: branch
+        run: echo "git_branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_BRANCH
+
+      - name: Check Branch
+        run: echo "${{ env.branch }}"
+
+      - name: Get Hash
+        id: hash
+        run: echo  "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
+
+      - name: Check Hash
+        run: echo "${{ env.hash }}"
+
+      - name: Create docker image
+        run: ./docker-build.sh ${{ env.branch }} ${{ env.hash }}    
          
  
 
