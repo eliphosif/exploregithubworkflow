@@ -1,0 +1,30 @@
+name: test_deploy_x
+
+on:
+  workflow_dispatch:
+    inputs: 
+     unique_id:
+        description: "Input a Unix time value (e.g., 1692180186) for a unique and URL-included ID"
+        default: ${{ steps.timestamp.outputs.timestamp }}
+        type: string  
+  workflow_call:
+    inputs: 
+     unique_id:
+        description: "Input a Unix time value (e.g., 1692180186) for a unique and URL-included ID"
+        default: ${{ steps.timestamp.outputs.timestamp }}
+        type: string
+
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    outputs:
+      timestamp: ${{ steps.set_timestamp.outputs.timestamp }}
+    steps:
+    - name: Set timestamp
+      id: set_timestamp
+      run: echo "::set-output name=timestamp::$(date +%s)"
+  print_unique_id:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print unique_id
+      run: echo "Unique ID is ${{ inputs.unique_id }}"
